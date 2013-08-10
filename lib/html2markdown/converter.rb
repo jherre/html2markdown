@@ -43,11 +43,9 @@ module HTML2Markdown
       when 'li'
         result << "*#{contents}\n"
       when 'blockquote'
-        contents.split('\n').each do |part|
-          if not part.empty?
-            result << ">#{part}\n"
-          else
-            result << "\n"
+        contents.split("\n").each do |part|
+          if not part.strip.empty?
+            result << ">#{part}\n\n"
           end
         end
       when 'strong'
