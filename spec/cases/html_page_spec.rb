@@ -90,6 +90,16 @@ NEXT！<br>
       "strong text : **#{contents}**"
     end
     p.markdown!.should be_include('strong text')
+  end     
+  
+  it "can parse html b tags" do
+    p = HTMLPage.new :contents => '<b>haha</b>'  
+    p.markdown!.should be_include('*haha*')
+  end
+
+  it "can parse html i tags" do
+    p = HTMLPage.new :contents => '<i>haha</i>'
+    p.markdown!.should be_include('_haha_')
   end
 
 end

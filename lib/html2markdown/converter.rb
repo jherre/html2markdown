@@ -38,6 +38,7 @@ module HTML2Markdown
       # default parse
       case node.name.downcase
       when 'i'
+        result << " _#{contents}_ "
       when 'script'
       when 'style'
       when 'li'
@@ -48,6 +49,8 @@ module HTML2Markdown
             result << ">#{part}\n\n"
           end
         end
+      when 'em', 'b'
+        result << " **#{contents}** "
       when 'strong'
         result << "**#{contents}**\n"
       when 'h1'
